@@ -12,16 +12,12 @@ html = requests.get(url).text
 soup = BeautifulSoup(html, 'html.parser')
 tables_list=soup.find_all('table', {'class': 'wikitable'})
 
-print(len(tables_list))
 i = 0
 
 for table in tables_list:
-    print("table no: ", i)
     rows = table.find_all('tr')
     wikitable = Wikitable()
-    j = 0
     for row in rows:
-        print("row no: ", j)
         cells = row.find_all(['td', 'th'])
         if cells is None: #TODO?
             continue
@@ -35,12 +31,11 @@ for table in tables_list:
                 colspan = 1
             if rowspan is None:
                 rowspan = 1
-            for i in range(int(colspan)):
+            for m in range(int(colspan)):
                 wikitable.add_value(value)
-            for i in range(int(rowspan)-1):
+            for n in range(int(rowspan)-1):
                 wikitable.next_add(value, i+1)
         wikitable.iterate_row()
-        j = j+1
+    with open('table'+str(i), 'w') as outfile:
+        outfile.write(wikitable.to_csv())
     i = i+1
-
-print(i)
