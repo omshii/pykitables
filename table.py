@@ -3,35 +3,34 @@ from row import Wikirow
 class Wikitable:
 
     def __init__(self):
-        self.table = [Row()]
+        self.table = [Wikirow()]
         self.current_index = 0
 
-    def add_cell(self, value):
+    def add_value(self, value):
         try:
-            self.table[self.current_index].append(value)
+            self.table[self.current_index].add_cell(value)
         except IndexError:
             self.new_row()
-            self.add_cell(value)
+            self.add_value(value)
 
     def iterate_row(self):
         self.current_index = self.current_index + 1
 
     def next_add(self, value, index):
-        try:
-            self.table[index].append(value)
-        except IndexError:
+        for i in range(len(self.table)-1, self.current_index+index):
             self.new_row()
-            self.next_add(value, index)
+        self.table[self.current_index+index].insert_cell(value, self.current_len())
 
     def new_row(self):
-        self.table.append(Row())
+        self.table.append(Wikirow())
 
     def to_csv(self):
         csv = ""
         for row in self.table:
-            csv = csv + row.get_values()
+            csv = csv + row.to_csv()
             csv = csv+'\n'
         return csv
 
+    #TODO: messy, replace with get current row perhaps
     def current_len(self):
         return self.table[self.current_index].current_len()
