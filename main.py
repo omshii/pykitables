@@ -1,3 +1,6 @@
+#TODO: Get links
+#TODO: Build package
+
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
@@ -34,7 +37,7 @@ for table in tables_list:
             for m in range(int(colspan)):
                 wikitable.add_value(value)
             for n in range(int(rowspan)-1):
-                wikitable.next_add(value, i+1)
+                wikitable.next_add(value, n+1)
         wikitable.iterate_row()
     with open('table'+str(i), 'w') as outfile:
         outfile.write(wikitable.to_csv())
