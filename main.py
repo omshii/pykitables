@@ -3,10 +3,8 @@
 
 import requests
 from bs4 import BeautifulSoup
-import numpy as np
 import sys
-import pandas
-from table import Wikitable
+from wikitable import Wikitable
 
 url = sys.argv[1]
 
