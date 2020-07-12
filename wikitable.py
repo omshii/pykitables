@@ -1,4 +1,4 @@
-from wikirow import Wikirow
+from pykitables.wikirow import Wikirow
 
 class Wikitable:
 
