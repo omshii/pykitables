@@ -1,6 +1,5 @@
 # pykitables
-A python package for getting all the tables from a Wikipedia page.
-
+A python package for getting neatly formatted tables from a Wikipedia page using beautifulsoup4.
 
 ## Usage
 ``` import pykitables

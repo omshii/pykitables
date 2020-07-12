@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/omshii/pykitables",
-    install_requires=['bs4'],
+    install_requires=['beautifulsoup4', 'requests'],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
