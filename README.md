@@ -1,8 +1,8 @@
 # pykitables
 A python package for getting neatly formatted tables from any Wikipedia page using beautifulsoup4.
 
-##Installation
-'''pip install pykitables'''
+## Installation
+''' pip install pykitables '''
 
 ## Usage
 ``` import pykitables
